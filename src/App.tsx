@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import a from './App.module.css';
+import {Button} from "./button/Button";
+import cat from './img/Без названия.jpg'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [state, setState] = useState(false)
+
+    const toggle = () => {
+        setState(!state)
+    }
+
+    return (
+        <div className={a.App}>
+            <div className={a.wrapper}>
+                <Button name={'Open modal window 😀'}
+                    onClick={toggle}
+                />
+                {
+                    state ? <div>
+                        <img className={a.cat} src={cat}/>
+                        <h2>❤ I love you ❤ </h2>
+                    </div>: ''
+                }
+            </div>
+        </div>
+    );
 }
 
 export default App;
+
